@@ -10,7 +10,15 @@
     "build:github": "ng build --configuration=production && echo \"web.public-pool.io\" > dist/public-pool-ui/CNAME",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "bundle-report": "ng build --configuration=production --source-map=true --named-chunks=true --stats-json && webpack-bundle-analyzer dist/public-pool-ui/stats.json"
+    "bundle-report": "ng build --configuration=production --source-map=true --named-chunks=true --stats-json && webpack-bundle-analyzer dist/public-pool-ui/stats.json",
+    "docker:build": "docker build -t ntheile/pleb-pool-ui .",
+    "docker:build:prod": "docker build -t ntheile/pleb-pool-ui:latest -t ntheile/pleb-pool-ui:$(date +%Y%m%d-%H%M%S) .",
+    "docker:run": "docker run -p 8080:80 ntheile/pleb-pool-ui",
+    "docker:run:dev": "docker run -p 8080:80 -e API_URL=https://api.plebpool.com -e STRATUM_URL=plebpool.com:2018 -e PRODUCTION=false ntheile/pleb-pool-ui",
+    "docker:package": "npm run docker:build && docker save ntheile/pleb-pool-ui:latest | gzip > pleb-pool-ui.tar.gz",
+    "docker:push": "docker push ntheile/pleb-pool-ui:latest",
+    "docker:push:all": "docker push ntheile/pleb-pool-ui --all-tags",
+    "docker:clean": "docker rmi ntheile/pleb-pool-ui || true"
   },
   "private": true,
   "dependencies": {
@@ -51,5 +59,6 @@
     "karma-jasmine-html-reporter": "~2.0.0",
     "typescript": "~5.5.3",
     "webpack-bundle-analyzer": "^4.9.0"
-  }
+  },
+  "packageManager": "pnpm@9.9.0+sha256.7a4261e50d9a44d9240baf6c9d6e10089dcf0a79d0007f2a26985a6927324177"
 }

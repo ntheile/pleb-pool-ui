@@ -1,5 +1,5 @@
 export const environment = {
     production: false,
-    API_URL: 'http://localhost:3334',
-    STRATUM_URL: 'public-pool.io:21496'
+    API_URL: 'https://api.plebpool.com',
+    STRATUM_URL: 'plebpool.com:2018'
 };

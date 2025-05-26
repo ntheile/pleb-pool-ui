@@ -1,6 +1,6 @@
 {
     "/api": {
-        "target": "https://public-pool.io:40557",
+        "target": "http://api.plebpool.com",
         "secure": true,
         "changeOrigin": true,
         "logLevel": "debug",

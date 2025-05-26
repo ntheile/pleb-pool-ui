@@ -1,6 +1,6 @@
 {
     "/api": {
-        "target": "https://localhost:3334",
+        "target": "https://api.plebpool.com",
         "secure": true,
         "changeOrigin": false,
         "logLevel": "debug"
